@@ -1,0 +1,194 @@
+.main_box{
+    overflow: hidden;
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+
+ .user_box{
+     width: 40vw;
+     height: 100%;
+     background-color: rgb(132, 148, 161);
+
+.user_inner_box{
+   max-height: fit-content;
+   min-height: 88vh;
+   overflow-y:auto;
+   overflow-x: hidden;
+  padding: 10px;
+   
+   .my_chats{
+      display: flex;
+    //   border: 1px solid red;
+      justify-content: space-between;
+      align-items: center;
+
+button{
+    padding: 5px;
+    font-size: 14px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: white;
+    border-radius: 8px;
+   cursor: pointer;
+  
+}
+
+   }
+
+   .user_list{
+    // border: 1px solid blue;
+    width: 95%;
+    height: 8vh;
+    border-radius: 10px;
+    margin-top: 5px;
+    background-color: grey;
+    padding-inline: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+
+img{
+    height: 6vh;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50%;
+
+}
+
+
+    // p{
+    //     border: 1px solid red;
+    // }
+   
+   }
+}
+
+     
+ }
+ .chat_box{
+   
+    width: 60vw;
+    padding-top: 20px;
+    background-color: rgba(132, 148, 161,0.8);
+h3{
+    text-align: center;
+    font-size: 1.4rem;
+    // margin-inline: 20px;
+}
+
+.chat_section{
+    max-height: fit-content;
+    height: 60vh;
+    width: 100%;
+    // border: 1px solid red;
+    padding: 20px;
+    overflow-y: auto;
+
+    .your_msg{
+        // width: fit-content;
+        // border: 1px solid red;
+        background-color: transparent;
+        display: flex;
+        // gap: 5px;
+        justify-content: flex-end;
+        height: fit-content;
+        border-radius: 6px;
+        margin-block: 10px;
+        margin-inline: 50px;
+
+         p{
+            
+            font-size: 1.0rem;
+            background-color: rgb(45, 45, 45);
+            width: fit-content;
+            padding: 4px 10px;
+            border-radius: 0px 7px 7px 7px;
+            color: rgb(174, 170, 170); 
+            margin-block: 0px;
+            
+        }
+    }
+
+    .other_msg{
+        // border: 1px solid red;
+        width: fit-content;
+        background-color: transparent;
+        display: flex;
+        gap: 5px;
+        height: fit-content;
+        border-radius: 6px;
+        margin-block: 10px;
+    
+        img{
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        p{
+            font-size: 1.0rem;
+            background-color: rgb(45, 45, 45);
+            width: fit-content;
+            padding: 4px 10px;
+            border-radius: 0px 7px 7px 7px;
+            color: rgb(174, 170, 170); 
+            margin-block: 0px;
+            // font-family: 'Poppins', sans-serif;
+            // color: ;
+        }
+    }
+
+h5{
+    color: rgb(79, 61, 26);
+}
+
+}
+.form{
+    // border: 1px solid red;
+    position: fixed;
+    bottom: 10px;
+    left: 43vw;
+    height: 50px;
+    display: flex;
+    // background-color: antiquewhite;
+
+    input{
+        height: 93%;
+        width: 48vw;
+        border-radius: 10px 0px 0px 10px;
+        border: 1px solid black;
+        background-color: antiquewhite;
+        padding-inline: 10px;
+        font-size: 1.2rem;
+
+        &:focus{
+            outline: none;
+        }
+    }
+
+    button{
+        height: 100%;
+        width: 5vw;
+        border: 1px solid black;
+        margin-bottom: 0px !important;
+        border-radius: 0px 10px 10px 0px;
+        background-color: antiquewhite;
+        cursor: pointer;
+      
+       svg{
+        // border: 1px solid red;
+        height: 25px;
+        width: 25px;
+       } 
+    }
+}
+
+  
+
+ }
+
+}
