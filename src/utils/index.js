@@ -1,4 +1,4 @@
-export const API_LINK = "http://localhost:8000";
+// export const API_LINK = "http://localhost:8000";
 
 const user = JSON.parse(localStorage.getItem('userInfo'))?._id;
 

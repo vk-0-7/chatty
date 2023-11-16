@@ -33,7 +33,7 @@ const Navbar = () => {
 
     const userData = async () => {
         try {
-            const usersdata = await axios.get(API_LINK + '/api/getallUser');
+            const usersdata = await axios.get(REACT_APP_API_LINK + '/api/getallUser');
             console.log('users data::::', usersdata.data)
             setallUserDetail(usersdata.data)
 
@@ -50,7 +50,7 @@ const Navbar = () => {
    
     const accessChats = async (id) => {
         try {
-            const chatdata = await axios.post(API_LINK + '/api/chat', { currUserId: user, userId: id });
+            const chatdata = await axios.post(REACT_APP_API_LINK + '/api/chat', { currUserId: user, userId: id });
             console.log('chat data::::', chatdata.data)
            
 

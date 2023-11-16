@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import styles from './creategroup.module.scss'
-import { API_LINK } from '../utils/index';
+// import { API_LINK } from '../utils/index';
 import { AiOutlinePlus } from 'react-icons/ai'
 
 const CreateGroup = ({ setOpenGroup }) => {
@@ -22,7 +22,7 @@ const CreateGroup = ({ setOpenGroup }) => {
 
   const fetchData = async () => {
     try {
-      const usersdata = await axios.get(API_LINK + '/api/getallUser',);
+      const usersdata = await axios.get(REACT_APP_API_LINK + '/api/getallUser',);
       console.log('users data::::', usersdata.data)
       setallUserDetail(usersdata.data)
 
@@ -49,7 +49,7 @@ const CreateGroup = ({ setOpenGroup }) => {
 
   const CreateGroup = async () => {
     try {
-      const groupcreated = await axios.post(API_LINK + '/api/group',{"name":groupname,users:JSON.stringify(selectedUser)});
+      const groupcreated = await axios.post(REACT_APP_API_LINK + '/api/group',{"name":groupname,users:JSON.stringify(selectedUser)});
       console.log('group data::::', groupcreated)
       fetchData();
 
