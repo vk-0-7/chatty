@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './chat.scss';
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'
 import { AiOutlineSend, AiOutlinePlus } from 'react-icons/ai'
 import io from "socket.io-client"
@@ -10,7 +11,6 @@ import { findOtherUser } from './utils';
 import { API_LINK } from './utils';
 import { addmesssage } from './redux/messageSlice';
 import CreateGroup from './components/creategroup';
-import axios from 'axios';
 import animationData from './animation/typing_animation.json'
 import Navbar from './components/navbar';
 const ENDPOINT = "http://localhost:8000";

@@ -1,8 +1,8 @@
 import React from 'react'
+import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import Chat from './Chat';
-import axios from 'axios';
 import CircularProgress from "@mui/joy/CircularProgress";
 import styles from './login.module.scss'
 import { NavLink } from "react-router-dom";

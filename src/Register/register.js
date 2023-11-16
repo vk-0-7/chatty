@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import styles from './register.module.scss'
+import axios from 'axios';
 // import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import CircularProgress from "@mui/joy/CircularProgress";
 import Loader from '../components/loader';
@@ -56,14 +56,14 @@ const Register = () => {
 
     };
 
-    const handleRegister = (e) => {
+    const handleRegister =async (e) => {
         setBtnLoader(true);
         if( !user.name || !user.password || !user.password ){
             toast.error('Enter valid Credentials');
         }
         else{
             try {
-                const data = axios.post('http://localhost:8000/user/register',
+                const data =await axios.post('http://localhost:8000/user/register',
                     {
                         "name": user.name,
                         "email": user.email,
