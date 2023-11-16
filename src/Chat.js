@@ -8,7 +8,6 @@ import io from "socket.io-client"
 import Lottie from 'react-lottie';
 import ScrollableFeed from 'react-scrollable-feed'
 import { findOtherUser } from './utils';
-// import { API_LINK } from './utils';
 import { addmesssage } from './redux/messageSlice';
 import CreateGroup from './components/creategroup';
 import animationData from './animation/typing_animation.json'
@@ -64,7 +63,7 @@ function Chat() {
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('userInfo'));
-    socket = io(REACT_APP_API_LINK);
+    socket = io(process.env.REACT_APP_API_LINK);
     socket.emit("setup", userData);
     socket.on('connected', () => setsocketConnected(true))
     socket.on('typing', () => setisTyping(true))
@@ -76,7 +75,7 @@ function Chat() {
 
     try {
 
-      const chatsdata = await axios.get(REACT_APP_API_LINK + '/api/chat', { params: { "currUserId": JSON.parse(localStorage.getItem('userInfo'))._id } }, {
+      const chatsdata = await axios.get(process.env.REACT_APP_API_LINK + '/api/chat', { params: { "currUserId": JSON.parse(localStorage.getItem('userInfo'))._id } }, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -101,7 +100,7 @@ function Chat() {
   const getallMessages = async () => {
     try {
 
-      const allchats = await axios.get(REACT_APP_API_LINK + '/api/message/' + userSelectedToChat?._id, {
+      const allchats = await axios.get(process.env.REACT_APP_API_LINK + '/api/message/' + userSelectedToChat?._id, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -136,7 +135,7 @@ function Chat() {
   const handlesendMessage = async () => {
     try {
       socket.emit('stop typing', userSelectedToChat._id)
-      const sendmessage = await axios.post(REACT_APP_API_LINK + '/api/message/', { content: message, senderId: user._id, chatId: userSelectedToChat._id }, {
+      const sendmessage = await axios.post(process.env.REACT_APP_API_LINK + '/api/message/', { content: message, senderId: user._id, chatId: userSelectedToChat._id }, {
         headers: {
           'Content-Type': 'application/json'
         }

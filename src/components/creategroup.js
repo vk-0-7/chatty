@@ -22,7 +22,7 @@ const CreateGroup = ({ setOpenGroup }) => {
 
   const fetchData = async () => {
     try {
-      const usersdata = await axios.get(REACT_APP_API_LINK + '/api/getallUser',);
+      const usersdata = await axios.get(process.env.REACT_APP_API_LINK + '/api/getallUser',);
       console.log('users data::::', usersdata.data)
       setallUserDetail(usersdata.data)
 
@@ -49,7 +49,7 @@ const CreateGroup = ({ setOpenGroup }) => {
 
   const CreateGroup = async () => {
     try {
-      const groupcreated = await axios.post(REACT_APP_API_LINK + '/api/group',{"name":groupname,users:JSON.stringify(selectedUser)});
+      const groupcreated = await axios.post(process.env.REACT_APP_API_LINK + '/api/group',{"name":groupname,users:JSON.stringify(selectedUser)});
       console.log('group data::::', groupcreated)
       fetchData();
 

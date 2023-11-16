@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import styles from './navbar.module.scss'
 import { useNavigate } from 'react-router-dom';
-import { API_LINK } from '../utils/index';
 import { AiOutlinePlus } from 'react-icons/ai'
 
 
@@ -33,7 +32,7 @@ const Navbar = () => {
 
     const userData = async () => {
         try {
-            const usersdata = await axios.get(REACT_APP_API_LINK + '/api/getallUser');
+            const usersdata = await axios.get(process.env.REACT_APP_API_LINK + '/api/getallUser');
             console.log('users data::::', usersdata.data)
             setallUserDetail(usersdata.data)
 
@@ -50,7 +49,7 @@ const Navbar = () => {
    
     const accessChats = async (id) => {
         try {
-            const chatdata = await axios.post(REACT_APP_API_LINK + '/api/chat', { currUserId: user, userId: id });
+            const chatdata = await axios.post(process.env.REACT_APP_API_LINK + '/api/chat', { currUserId: user, userId: id });
             console.log('chat data::::', chatdata.data)
            
 
