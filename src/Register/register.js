@@ -63,7 +63,7 @@ const Register = () => {
         }
         else{
             try {
-                const data =await axios.post('http://localhost:8000/user/register',
+                const data =await axios.post(REACT_APP_API_LINK+'user/register',
                     {
                         "name": user.name,
                         "email": user.email,
