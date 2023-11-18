@@ -35,7 +35,7 @@ const Login = () => {
     }
     else {
       try {
-        const data =await axios.post('http://localhost:8000/user/login',
+        const data =await axios.post( process.env.REACT_APP_API_LINK+'user/login',
           {
 
             "email": user.email,
