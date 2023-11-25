@@ -63,7 +63,12 @@ function Chat() {
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('userInfo'));
 
-    socket = io(process.env.REACT_APP_API_LINK);
+    socket = io(process.env.REACT_APP_API_LINK, {
+      withCredentials: true,
+      extraHeaders: {
+        "my-custom-header": "abcd"
+      }
+    });
     socket.emit("setup", userData);
     socket.on('connected', () => setsocketConnected(true))
     socket.on('typing', () => setisTyping(true))
