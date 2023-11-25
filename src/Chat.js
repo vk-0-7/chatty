@@ -63,7 +63,7 @@ function Chat() {
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('userInfo'));
 
-    socket = io(process.env.REACT_APP_API_LINK, {
+    socket = io('https://chatty-backend-rg6o.onrender.com/', {
       withCredentials: true,
       extraHeaders: {
         "my-custom-header": "abcd"
