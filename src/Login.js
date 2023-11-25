@@ -35,6 +35,7 @@ const Login = () => {
     }
     else {
       try {
+        console.log(process.env.REACT_APP_API_LINK);
         const data = await axios.post(process.env.REACT_APP_API_LINK + 'user/login',
           {
 
@@ -52,7 +53,7 @@ const Login = () => {
         localStorage.setItem('userInfo', JSON.stringify(data.data));
 
       } catch (error) {
-        console.log('error in login api');
+        console.log('error in login api', error);
         toast.error('Error in login');
         setBtnLoader(false);
       }

@@ -12,7 +12,6 @@ import { addmesssage } from './redux/messageSlice';
 import CreateGroup from './components/creategroup';
 import animationData from './animation/typing_animation.json'
 import Navbar from './components/navbar';
-// const ENDPOINT = "http://localhost:8000";
 // const socket = io(ENDPOINT);
 // import io from 'socket.io-client'
 var socket, selectedchatCompare;
@@ -48,7 +47,7 @@ function Chat() {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
- 
+
 
 
 
@@ -63,6 +62,7 @@ function Chat() {
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('userInfo'));
+
     socket = io(process.env.REACT_APP_API_LINK);
     socket.emit("setup", userData);
     socket.on('connected', () => setsocketConnected(true))
@@ -145,7 +145,7 @@ function Chat() {
 
       socket.emit('new message', sendmessage.data)
       dispatch(addmesssage([...allmessages, sendmessage.data]));
-      setAllMessages((prevmessages)=> [...prevmessages,sendmessage.data]);
+      setAllMessages((prevmessages) => [...prevmessages, sendmessage.data]);
 
     } catch (error) {
       alert('error')
@@ -155,19 +155,19 @@ function Chat() {
 
   useEffect(() => {
     socket.on("message received", (newMessageReceived) => {
-         console.log('message',newMessageReceived);
+      console.log('message', newMessageReceived);
       if (selectedchatCompare !== newMessageReceived.chat._id) {
         //give notification
         console.log(selectedchatCompare, newMessageReceived.chat);
       }
       else {
         console.log(allmessages)
-        let temp=[...allmessages];
+        let temp = [...allmessages];
         temp.push(newMessageReceived)
         // const newarr=[...allmessages,newMessageReceived];
         console.log(newMessageReceived);
         // console.log('new arr',newarr);
-        setAllMessages((prevmessages)=> [...prevmessages,newMessageReceived]);
+        setAllMessages((prevmessages) => [...prevmessages, newMessageReceived]);
         console.log(allmessages)
         console.log(temp)
         dispatch(addmesssage(temp));
@@ -280,9 +280,9 @@ function Chat() {
             </ScrollableFeed>
           </div>
 
-            {
-              isTyping ? <div style={{position:"absolute",bottom:"8vh",left:"43vw"}}> <Lottie options={defaultOptions} width={60} style={{ marginBottom: 10, marginLeft: 0 }} /> </div> : <></>
-            }
+          {
+            isTyping ? <div style={{ position: "absolute", bottom: "8vh", left: "43vw" }}> <Lottie options={defaultOptions} width={60} style={{ marginBottom: 10, marginLeft: 0 }} /> </div> : <></>
+          }
           <div className='form' >
             <input type="text" placeholder='write a message' name='chat' value={message} onChange={typingHandler} />
 
