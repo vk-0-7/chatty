@@ -3,6 +3,7 @@ import axios from 'axios';
 import styles from './navbar.module.scss'
 import { useNavigate } from 'react-router-dom';
 import { AiOutlinePlus } from 'react-icons/ai'
+import { RiMenuAddLine } from "react-icons/ri";
 
 
 const Navbar = () => {
@@ -41,17 +42,17 @@ const Navbar = () => {
         }
     }
 
-  useEffect(() => {
+    useEffect(() => {
 
-    userData();
-  }, [])
-  
-   
+        userData();
+    }, [])
+
+
     const accessChats = async (id) => {
         try {
             const chatdata = await axios.post(process.env.REACT_APP_API_LINK + 'api/chat', { currUserId: user, userId: id });
             console.log('chat data::::', chatdata.data)
-           
+
 
         } catch (error) {
             console.log('error')
@@ -69,7 +70,7 @@ const Navbar = () => {
                     alluserDetail.filter((value) => value._id != user._id)?.map((val, index) => {
                         return (
 
-                            <div className={styles.users_list} onClick={()=>accessChats(val._id) } key={index} >
+                            <div className={styles.users_list} onClick={() => accessChats(val._id)} key={index} >
                                 <img src={val.pic} alt="" />
                                 <p>
                                     {val?.name}
@@ -85,7 +86,7 @@ const Navbar = () => {
             </div>}
 
             <div className={styles.search_users}>
-                <input type="text" placeholder='search' onChange={(e) => setSearchQuery(e.target.value)} onClick={(prev) => setOpenSidebar(true)} />
+                <RiMenuAddLine onClick={(prev) => setOpenSidebar(true)} />
 
 
             </div>

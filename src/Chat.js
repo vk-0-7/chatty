@@ -11,6 +11,7 @@ import { findOtherUser } from './utils';
 import { addmesssage } from './redux/messageSlice';
 import CreateGroup from './components/creategroup';
 import animationData from './animation/typing_animation.json'
+import { IoArrowBackOutline } from "react-icons/io5";
 import Navbar from './components/navbar';
 // const socket = io(ENDPOINT);
 // import io from 'socket.io-client'
@@ -25,9 +26,11 @@ function Chat() {
   console.log(storeedMessage);
 
   const dispatch = useDispatch()
-  const [name, setname] = useState('');
-  const [room, setroom] = useState('');
-  const [alluserDetail, setallUserDetail] = useState([]);
+  // const [name, setname] = useState('');
+  // const [room, setroom] = useState('');
+  // const [alluserDetail, setallUserDetail] = useState([]);
+  const [isSmScreen, setIsSmScreen] = useState(window.innerWidth <= 700);
+  const [showUserList, setShowUserList] = useState(true);
   const [user, setUser] = useState();
   const [userSelectedToChat, setUserSelectedToChat] = useState({});
   const [typing, settyping] = useState(false)
@@ -207,15 +210,14 @@ function Chat() {
 
   return (
     <>
-      {/* {console.log('all messages ::::', allmessages)} */}
-      {/* {console.log('selected user ::::', userSelectedToChat)} */}
+
       {
         opengroup && <CreateGroup setOpenGroup={setOpenGroup} />
       }
       <Navbar />
       <div className='main_box'>
 
-        <div className="user_box">
+        <div className="user_box" style={{ display: (!showUserList && isSmScreen) ? "none" : "block" }}>
           <div className="user_inner_box">
 
             <div className="my_chats">
@@ -231,12 +233,13 @@ function Chat() {
               chat?.map((val, index) => {
                 return (
                   <>
-                    <div className='user_list' key={index} onClick={() => setUserSelectedToChat(val)} >
+                    <div className='user_list' key={index}
+                      onClick={() => { setUserSelectedToChat(val); setShowUserList(false) }} >
                       {val.isGroupChat ? <img src="https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-group-icon-png-image_1796653.jpg" alt="" /> : <img src={findOtherUser(val.users)[0].pic} alt="" />}
                       {!val.isGroupChat ? <p>
                         {findOtherUser(val.users)[0].name}
                       </p> : <p>{val.chatName}</p>}
-                    </div>
+                    </div >
                   </>
                 )
               })
@@ -245,7 +248,7 @@ function Chat() {
           </div>
         </div>
         <div className="chat_box">
-
+          {(isSmScreen && !showUserList) && <IoArrowBackOutline onClick={() => setShowUserList(true)} />}
           {userSelectedToChat?._id && <h3>{userSelectedToChat?.isGroupChat ? userSelectedToChat?.chatName : findOtherUser(userSelectedToChat.users)[0].name}</h3>}
           <div className="chat_section">
             <ScrollableFeed>
@@ -283,17 +286,17 @@ function Chat() {
           {
             isTyping ? <div style={{ position: "absolute", bottom: "8vh", left: "43vw" }}> <Lottie options={defaultOptions} width={60} style={{ marginBottom: 10, marginLeft: 0 }} /> </div> : <></>
           }
-          <div className='form' >
+          {!showUserList && <div className='form' >
             <input type="text" placeholder='write a message' name='chat' value={message} onChange={typingHandler} />
 
             <button onClick={handlesendMessage} ><AiOutlineSend /> </button>
 
-          </div>
+          </div>}
 
 
 
         </div>
-      </div>
+      </div >
     </>
   );
 }

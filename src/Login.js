@@ -35,8 +35,8 @@ const Login = () => {
     }
     else {
       try {
-        console.log(process.env.REACT_APP_API_LINK);
-        const data = await axios.post(process.env.REACT_APP_API_LINK + 'user/login',
+        // console.log(process.env.REACT_APP_API_LINK);
+        const data = await axios.post('https://chatty-backend-rg6o.onrender.com/' + 'user/login',
           {
 
             "email": user.email,

@@ -12,12 +12,9 @@
 
     margin-left: 5vw;
 
-    input {
-      height: 100%;
-      width: 100%;
-      border: 1px solid black;
-      border-radius: 10px;
-      padding-left: 5px;
+    svg {
+      height: 27px;
+      width: 27px;
     }
   }
 
@@ -90,47 +87,114 @@
   }
 }
 
-.sidebar{
-    height: 90vh;
-    // padding-block: 5vh;
-    // padding-inline: 10px;
-    width: 30vw;
+.sidebar {
+  height: 100vh;
+  // padding-block: 5vh;
+  // padding-inline: 10px;
+  width: 30vw;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background-color: white;
+  border-radius: 0px 10px 10px 0px;
+
+  .users_list {
+    margin-block: 5px;
+    border-radius: 5px;
+    background-color: rgb(186, 181, 181);
+    height: 6vh;
+    width: 70%;
+    margin-left: 5%;
+    cursor: pointer;
+
+    display: flex;
+    gap: 2vw;
+    align-items: center;
+
+    img {
+      height: 80%;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      margin-left: 10px;
+    }
+  }
+
+  svg {
+    font-size: 25px;
+    color: black;
     position: absolute;
-    bottom: 0px;
-    left: 0px;
-    background-color: white;
-    border-radius: 0px 10px 10px 0px;
+    top: 2vh;
+    left: 27vw;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
+}
 
-    .users_list{
-        margin-block: 5px;
-        border-radius: 5px;
-        background-color: rgb(186, 181, 181);
-        height: 6vh;
-        width: 70%;
-        margin-left: 5%;
-        cursor: pointer;
-       
-        display: flex;
-        gap: 2vw;
-        align-items: center;
-    
+@media (max-width: 800px) {
+  .main_div {
+    height: 10vh;
+    width: 100%;
+    background-color: rgb(151, 151, 193);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        img{
-            height: 80%;
-            aspect-ratio: 1/1;
-            border-radius: 50%;
-            margin-left: 10px;
-        }
+    .search_users {
+      height: 3vh;
+      width: 18vw;
+
+      margin-left: 5vw;
     }
 
-    svg{
-        font-size: 25px;
-        color: black;
+    h3 {
+      font-size: 16px;
+
+      padding-top: 5px;
+    }
+
+    .userinfo {
+      height: 6vh;
+      width: auto;
+      margin-right: 5vw;
+
+      .userdetail {
+        height: fit-content;
+        padding: 3vh 5vw;
+        aspect-ratio: unset;
+        width: fit-content;
+        background-color: rgb(95, 75, 75);
         position: absolute;
-        top: 2vh;
-        left: 27vw;
-        transform: rotate(45deg);
-        cursor: pointer;
+        top: 0px;
+        right: 0vw;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+      }
+    }
+  }
+
+  .sidebar {
+    height: 100%;
+    width: 80vw;
+    position: absolute;
+    top: 0px;
+    padding-top: 10vh;
+    left: 0px;
+
+    .users_list {
+      height: 6vh;
+      width: 80%;
+      margin-left: 5%;
+      cursor: pointer;
+
+      display: flex;
+      gap: 2vw;
+      align-items: center;
     }
 
+    svg {
+      top: 1vh;
+      left: 90%;
+    }
+  }
 }
