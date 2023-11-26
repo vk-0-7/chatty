@@ -63,7 +63,7 @@ function Chat() {
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('userInfo'));
 
-    socket = io('https://chatty-backend-rg6o.onrender.com/');
+    socket = io('https://chatty-backend-rg6o.onrender.com/', {});
     socket.emit("setup", userData);
     socket.on('connected', () => setsocketConnected(true))
     socket.on('typing', () => setisTyping(true))
